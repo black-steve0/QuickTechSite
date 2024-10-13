@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Arkis Tech</title>
+    <style>
+        .prevent-select {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #0073e6, #00c6ff);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            margin: 10px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #0073e6;
+            color: #f4f4f9;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .faq-question:hover {
+            background-color: #005bb5;
+        }
+        .faq-question::before {
+            content: counter(item) ". ";
+            counter-increment: item;
+            margin-right: 10px;
+        }
+        /* .faq-toggle {
+            margin-left: 10px;
+            font-size: 1.5em;
+            line-height: 1;
+        } */
+        .faq-answer {
+            padding: 15px;
+            display: block;
+            background-color: #f9f9f9;
+            border-radius: 0 0 8px 8px;
+            opacity: 1;
+            color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out, max-height 1.5s ease-in-out;
+            max-height: 100px;
+        }
+        .faq-answer.open {
+            color: #333;
+            display: block;
+            opacity: 1;
+            max-height: 100px; /* Adjust as necessary for content */
+        }
+        footer {
+            background: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Counter reset */
+        .faq-container {
+            counter-reset: item;
+        }
+    </style>
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const toggleSign = element.querySelector('.faq-toggle');
+
+            if (answer.style.display === 'block') {
+                answer.style.display = 'block';
+                answer.textContent = ""
+                toggleSign.textContent = '+';
+            } else {
+                answer.textContent = "Arkis Tech is a leading technology company specializing in software development and IT consulting."
+                answer.style.display = 'block';
+                toggleSign.textContent = '-';
+            }
+
+            answer.classList.toggle('open');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Frequently Asked Questions</h1>
+</header>
+
+<section class="faq-container">
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">
+            What is Arkis Tech?
+            <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Arkis Tech is a leading technology company specializing in software development and IT consulting.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">
+            How can I contact support?
+            <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">You can reach our support team at support@arkistech.com or call us at (123) 456-7890.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">
+            What services do you offer?
+            <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">We offer a range of services including software development, IT consulting, and cloud solutions.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">
+            Do you offer training sessions?
+            <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Yes, we provide training sessions tailored to your organization's needs.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">
+            Where are you located?
+            <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">Our headquarters is located in San Francisco, CA, but we serve clients globally.</div>
+    </div>
+</section>
+
+<footer>
+    <p>Get In Touch: info@arkistech.com | (123) 456-7890</p>
+    <p>Follow Us: 
+        <a href="#">LinkedIn</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">Facebook</a>
+    </p>
+</footer>
+
+</body>
+</html>

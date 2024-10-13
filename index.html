@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkis Tech</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #E1F5FE, #BBDEFB); /* Gradient Background */
+            color: #212121; /* Dark Gray */
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(to right, #0D47A1, #1976D2); /* Gradient Background */
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Box shadow */
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(50px); /* Start with a slight downward offset */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Animation */
+        }
+        section.visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to original position */
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+        .service {
+            background: #FFFFFF; /* White for contrast */
+            border-radius: 10px; /* Slightly more rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Softer shadow */
+            margin: 10px;
+            padding: 20px;
+            flex: 1 1 calc(30% - 40px);
+            transition: transform 0.3s;
+        }
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+        .button {
+            background: #0D47A1; /* Dark Navy Blue */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #1976D2; /* Medium Blue on hover */
+        }
+        footer {
+            background: linear-gradient(to right, #0D47A1, #1976D2); /* Gradient Background */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); /* Box shadow */
+        }
+        @media (max-width: 768px) {
+            .service {
+                flex: 1 1 calc(45% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .service {
+                flex: 1 1 100%;
+            }
+        }
+        .details {
+            padding: 20px;
+            margin: 10px 0;
+            background: #F0F4FF; /* Light background for details */
+            border-radius: 10px;
+            width: 100%; /* Full width */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Arkis Tech</h1>
+    <p>Your gateway to innovative technology solutions.</p>
+</header>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="service">
+            <h3>Software Development</h3>
+            <p>Custom software solutions tailored to meet your needs.</p>
+            <a href="#software-development" class="button">Learn More</a>
+        </div>
+        <div class="service">
+            <h3>IT Consulting</h3>
+            <p>Expert guidance for navigating technology challenges.</p>
+            <a href="#it-consulting" class="button">Learn More</a>
+        </div>
+        <div class="service">
+            <h3>Digital Transformation</h3>
+            <p>Integrate advanced technologies to drive growth.</p>
+            <a href="#digital-transformation" class="button">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section id="software-development">
+    <h2>Software Development</h2>
+    <div class="details">
+        <p>Placeholder text for software development services. Describe the types of software you develop, the technologies you use, and how your services can help clients achieve their goals.</p>
+    </div>
+</section>
+
+<section id="it-consulting">
+    <h2>IT Consulting</h2>
+    <div class="details">
+        <p>Placeholder text for IT consulting services. Discuss your approach to IT strategy, project management, and how you help businesses navigate their technology landscapes.</p>
+    </div>
+</section>
+
+<section id="digital-transformation">
+    <h2>Digital Transformation</h2>
+    <div class="details">
+        <p>Placeholder text for digital transformation services. Explain how you assist organizations in adopting new technologies and improving their business processes.</p>
+    </div>
+</section>
+
+<footer>
+    <p>Get In Touch: <a href="mailto:info@arkistech.com" style="color: white;">info@arkistech.com</a> | (123) 456-7890</p>
+    <p>Follow Us: <a href="#" style="color: white;">Instagram</a> | <a href="#" style="color: white;">LinkedIn</a></p>
+</footer>
+
+<script>
+    // Function to add animation on scroll
+    const sections = document.querySelectorAll("section");
+    const options = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
